@@ -83,7 +83,7 @@ export default function ProductSearchResults() {
     const getProductsSearchResult = () => {
         axios({
             method: 'get',
-            url: 'https://bd90-31-56-230-17.eu.ngrok.io/product/list',
+            url: 'https://localhost:8086/product/list',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin': '*'

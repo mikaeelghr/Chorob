@@ -51,7 +51,7 @@ export default function SignUp() {
         console.log("post data: ", d)
         axios({
             method: 'post',
-            url: 'https://bd90-31-56-230-17.eu.ngrok.io/core/register/',
+            url: 'http://localhost:8086/core/register/',
             data: d,
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',

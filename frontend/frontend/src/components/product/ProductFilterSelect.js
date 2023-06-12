@@ -11,7 +11,7 @@ export default function ProductFilterSelect({field, setField, fieldItems, setPro
         // TODO: get api for search results
         axios({
             method: 'get',
-            url: 'https://bd90-31-56-230-17.eu.ngrok.io/product/list',
+            url: 'http://localhost:8086/product/list',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin': '*'
@@ -34,10 +34,9 @@ export default function ProductFilterSelect({field, setField, fieldItems, setPro
         // TODO: get api for search results
         axios({
             method: 'get',
-            url: 'https://bd90-31-56-230-17.eu.ngrok.io/product/list',
+            url: 'http://localhost:8086/product/list',
             headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-                'Access-Control-Allow-Origin': '*'
+                'Content-Type': 'application/json;charset=UTF-8'
             },
             params: {
                 sort: 'price-',

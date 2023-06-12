@@ -39,7 +39,7 @@ export default function FiltersListItem({productData, setProductData}) {
         if (fromPriceField === 0) {
             axios({
                 method: 'get',
-                url: 'https://bd90-31-56-230-17.eu.ngrok.io/product/list',
+                url: 'http://localhost:8086/product/list',
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
                     'Access-Control-Allow-Origin': '*'
@@ -57,7 +57,7 @@ export default function FiltersListItem({productData, setProductData}) {
         } else if (toPriceField === 0) {
             axios({
                 method: 'get',
-                url: 'https://bd90-31-56-230-17.eu.ngrok.io/product/list',
+                url: 'http://localhost:8086/product/list',
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
                     'Access-Control-Allow-Origin': '*'
@@ -75,7 +75,7 @@ export default function FiltersListItem({productData, setProductData}) {
         } else {
             axios({
                 method: 'get',
-                url: 'https://bd90-31-56-230-17.eu.ngrok.io/product/list',
+                url: 'http://localhost:8086/product/list',
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
                     'Access-Control-Allow-Origin': '*'

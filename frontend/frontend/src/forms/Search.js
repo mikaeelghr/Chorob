@@ -22,12 +22,12 @@ export default function Search({data, isLogged, setProductData, isHome}) {
     const [productGetRes, setProductGetRes] = useState([])
     const navigate = useNavigate();
 
-// https://2525-31-56-237-194.eu.ngrok.io/product/list?name=samsung&price__lt=10000000&price__gt=50&category_id=3
+// http://localhost:8086/product/list?name=samsung&price__lt=10000000&price__gt=50&category_id=3
     const getProductSearchResult = (name) => {
         // TODO: get search request
         axios({
             method: 'get',
-            url: 'https://bd90-31-56-230-17.eu.ngrok.io/product/list',
+            url: 'http://localhost:8086/product/list',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
                 'Access-Control-Allow-Origin': '*'

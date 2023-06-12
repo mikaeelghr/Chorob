@@ -2,7 +2,7 @@ import axios from 'axios';
 // Next we make an 'instance' of it
 const instance = axios.create({
 // .. where we make our configurations
-    baseURL: 'https://e02f-31-56-237-194.eu.ngrok.io'
+    baseURL: 'http://localhost:8086'
 });
 
 // Where you would set stuff like your 'Authorization' header, etc ...
