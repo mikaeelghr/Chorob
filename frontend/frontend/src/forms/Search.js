@@ -8,6 +8,7 @@ import {
 } from "@material-ui/core";
 import {useNavigate} from "react-router";
 import axios from "axios";
+import {baseUrl} from "../Env";
 
 const useStyles = makeStyles(() => {
     return createStyles({
@@ -22,15 +23,14 @@ export default function Search({data, isLogged, setProductData, isHome}) {
     const [productGetRes, setProductGetRes] = useState([])
     const navigate = useNavigate();
 
-// http://localhost:8086/product/list?name=samsung&price__lt=10000000&price__gt=50&category_id=3
+// baseUrl/product/list?name=samsung&price__lt=10000000&price__gt=50&category_id=3
     const getProductSearchResult = (name) => {
         // TODO: get search request
         axios({
             method: 'get',
-            url: 'http://localhost:8086/product/list',
+            url: baseUrl + 'product/list',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                'Access-Control-Allow-Origin': '*'
             },
             params: {
                 name: name,

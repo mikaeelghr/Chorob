@@ -7,6 +7,7 @@ import {useState} from "react";
 import {Link as RouterLink, useNavigate} from 'react-router-dom';
 import Button from "@mui/material/Button";
 import axios from "axios";
+import {baseUrl} from "../../Env";
 
 export default function CategoriesInNav(props) {
     const {data, key, isHome, setProductData} = props
@@ -15,10 +16,9 @@ export default function CategoriesInNav(props) {
     const getProductData = (categoryId) => {
         axios({
             method: 'get',
-            url: 'http://localhost:8086/product/list',
+            url: baseUrl+'product/list',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                'Access-Control-Allow-Origin': '*'
             },
             params:{
                 category_id: categoryId,

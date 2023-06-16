@@ -17,6 +17,7 @@ import {useState} from "react";
 import ProductFilterSelect from "../components/product/ProductFilterSelect";
 import {useLocation} from "react-router-dom";
 import axios from "axios";
+import {baseUrl} from "../Env";
 
 const drawerWidth = 240;
 
@@ -83,10 +84,9 @@ export default function ProductSearchResults() {
     const getProductsSearchResult = () => {
         axios({
             method: 'get',
-            url: 'https://localhost:8086/product/list',
+            url: baseUrl+'product/list',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                'Access-Control-Allow-Origin': '*'
             },
             params: {
                 name: location.state.productName,

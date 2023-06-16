@@ -5,16 +5,16 @@ import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import newProductsFilterTest from "../../static/products2.json";
 import axios from "axios";
+import {baseUrl} from "../../Env";
 
 export default function ProductFilterSelect({field, setField, fieldItems, setProductData, productName}) {
     const getNewest = () => {
         // TODO: get api for search results
         axios({
             method: 'get',
-            url: 'http://localhost:8086/product/list',
+            url: baseUrl+'product/list',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                'Access-Control-Allow-Origin': '*'
             },
             params: {
                 name: productName,
@@ -34,7 +34,7 @@ export default function ProductFilterSelect({field, setField, fieldItems, setPro
         // TODO: get api for search results
         axios({
             method: 'get',
-            url: 'http://localhost:8086/product/list',
+            url: baseUrl+'product/list',
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8'
             },

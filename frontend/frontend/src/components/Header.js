@@ -10,6 +10,7 @@ import axios from "axios";
 import CategoriesPopOver from "./category/CategoriesPopOver";
 import categories from '../static/categoriesWithChild.json'
 import {useEffect, useState} from "react";
+import {baseUrl} from "../Env";
 
 function Header(props) {
 
@@ -17,10 +18,9 @@ function Header(props) {
     const getCategories = () => {
         axios({
             method: 'get',
-            url: 'http://localhost:8086/nested_categories/list',
+            url: baseUrl + 'nested_categories/list',
             headers: {
-                'Content-Type': 'application/json;charset=UTF-8',
-                'Access-Control-Allow-Origin': '*'
+                'Content-Type': 'application/json;charset=UTF-8'
             },
         }).then(function (response) {
             console.log(response);

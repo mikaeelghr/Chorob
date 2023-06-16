@@ -13,6 +13,7 @@ import {useNavigate} from "react-router-dom";
 import {useState} from "react";
 import {MainButton} from "../components/MainButton";
 import axios from "axios";
+import {baseUrl} from "../Env";
 
 
 const theme = createTheme({
@@ -51,11 +52,10 @@ export default function SignUp() {
         console.log("post data: ", d)
         axios({
             method: 'post',
-            url: 'http://localhost:8086/core/register/',
+            url: baseUrl+'core/register/',
             data: d,
             headers: {
                 'Content-Type': 'application/json;charset=UTF-8',
-                'Access-Control-Allow-Origin': '*'
             },
         }).then(function (response) {
             console.log(response);

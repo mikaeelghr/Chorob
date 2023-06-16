@@ -13,6 +13,7 @@ import allProducts from "../static/products.json";
 import Grid from "@mui/material/Grid";
 import {MainButton} from "./MainButton";
 import axios from "axios";
+import {baseUrl} from "../Env";
 
 
 export default function FiltersListItem({productData, setProductData}) {
@@ -39,10 +40,9 @@ export default function FiltersListItem({productData, setProductData}) {
         if (fromPriceField === 0) {
             axios({
                 method: 'get',
-                url: 'http://localhost:8086/product/list',
+                url: baseUrl+'product/list',
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
-                    'Access-Control-Allow-Origin': '*'
                 },
                 params: {
                     price__lt: toPriceField,
@@ -57,10 +57,9 @@ export default function FiltersListItem({productData, setProductData}) {
         } else if (toPriceField === 0) {
             axios({
                 method: 'get',
-                url: 'http://localhost:8086/product/list',
+                url: baseUrl+'product/list',
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
-                    'Access-Control-Allow-Origin': '*'
                 },
                 params: {
                     price__gt: fromPriceField,
@@ -75,10 +74,9 @@ export default function FiltersListItem({productData, setProductData}) {
         } else {
             axios({
                 method: 'get',
-                url: 'http://localhost:8086/product/list',
+                url: baseUrl+'product/list',
                 headers: {
                     'Content-Type': 'application/json;charset=UTF-8',
-                    'Access-Control-Allow-Origin': '*'
                 },
                 params: {
                     price__gt: fromPriceField,
