@@ -1,3 +1,15 @@
-from django.shortcuts import render
+from .services import crawl_specific_site
+from .torobche.spiders import CheapkoSpider, HiAppleSpider, MacbookiranSpider, MeghdaditSpider, KalaomaSpider
 
-# Create your views here.
+crawl_specific_site(CheapkoSpider)
+"""
+crawl_specific_site(MacbookiranSpider)
+crawl_specific_site(KalaomaSpider)
+crawl_specific_site(HiAppleSpider)"""
+
+
+def ws(p):
+    xx = ()
+    print(xx)
+    return "FEOIHE"
+

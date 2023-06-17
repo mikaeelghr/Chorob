@@ -18,8 +18,9 @@ class CrawlerService:
 
 def crawl_specific_site(scrapper):
     CrawlerService(scrapper).run()
-    CrawlLog(
+    """CrawlLog(
         shop_domain=scrapper.shop_domain,
         shop_name=scrapper.name,
         total_count_crawled=0
     ).save()
+    """

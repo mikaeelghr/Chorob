@@ -6,7 +6,7 @@ from crawler.torobche.spiders.base_scrapper import BaseScrapper
 
 class HiAppleSpider(BaseScrapper):
     name = "hiapple-scrapper"
-    shop_domain = "hi.ir"
+    shop_domain = "hiapple.ir"
     base_url = "https://hiapple.ir/page/{page_number}" \
                "/?s=apple&post_type=product&search_limit_to_post_titles=0&fs=1"
     allowed_domains = ["https://hiapple.ir"]
