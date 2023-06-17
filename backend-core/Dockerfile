@@ -5,7 +5,7 @@ WORKDIR /app
 
 RUN python -m venv /venv
 COPY requirements.txt /app/
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 COPY . /app/
 
 RUN chmod 0777 /app/run.sh

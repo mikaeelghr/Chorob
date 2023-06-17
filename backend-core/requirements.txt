@@ -12,3 +12,4 @@ elasticsearch_dsl
 shortuuid
 Werkzeug
 python-decouple==3.7
+django-admin-charts
