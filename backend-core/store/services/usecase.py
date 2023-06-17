@@ -2,7 +2,7 @@ from elasticsearch_dsl import Q
 
 from store.services.documents import ProductDocument
 from store.serializers.dtos import ProductListQuery
-from store.models import Category, BaseProduct
+from store.models import Category, BaseProduct, Product, ProductHistory
 
 
 def find_phrase_score(phr, name: str, features: dict):
@@ -54,33 +54,29 @@ def get_or_select_base_product(name: str, category_id, features: dict, price):
     if len(x) > 0:
         return x[0]
     print(name, category_id, price)
-    products = run_query(name, price * 1.3, price * 0.7)
-    if len(products) > 0:
-        base = [c for c in BaseProduct.objects.filter(uid=products[0].uid)][0]
-        return base
+    product = run_query(name, price * 1.3, price * 0.7)
+    if product is not None:
+        return product
 
     category = [c for c in Category.objects.filter(id=category_id)][0]
     return BaseProduct.objects.create(name=name, category=category)
 
 
-def run_query(query: str, price__lt, price__gt, result_count: int = 1):
-    search = ProductDocument.search()
-    search = search.query(Q('bool',
-                            should=[_get_match_query("name", query),
-                                    {'term': {'price__lt': price__lt}},
-                                    {'term': {'price__gt': price__gt}}],
-                            minimum_should_match=3))
-    results = search.execute()[:result_count]
-    return results
-
-
-def _get_match_query(field, value):
-    return {
-        "match": {
-            field: {
-                "query": value,
-                "operator": "and",
-                "fuzziness": "AUTO"
-            }
-        }
-    }
+def run_query(query: str, price__lt, price__gt):
+    best_score, best_base_product = 17, None
+    for base_product in BaseProduct.objects.all():
+        score = find_phrase_score(query, base_product.name)
+        if score > 0:
+            products = Product.objects.filter(base_product=base_product)
+            if len(products) == 0:
+                continue
+            product = ProductHistory.get_best_product(base_product)
+            last_history = ProductHistory.get_last_history(product)
+            for p in products:
+                score += find_phrase_score(query, p.name, p.features)
+            score /= len(products) + 1
+            if price__lt <= last_history.price <= price__gt:
+                score += 10
+            if score > best_score:
+                best_score, best_base_product = score, base_product
+    return best_base_product
