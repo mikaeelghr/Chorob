@@ -1,14 +1,19 @@
-from elasticsearch_dsl import Q
-
 from store.services.documents import ProductDocument
 from store.serializers.dtos import ProductListQuery
 from store.models import Category, BaseProduct, Product, ProductHistory
 
 
-def find_phrase_score(phr, name: str, features: dict):
+def find_phrase_score(phr, name: str, features: dict | None = None):
     score = 0
     if name.find(phr) != -1:
         score += 10
+
+    for p in phr.split(' '):
+        if name.find(p) != -1:
+            score += 3
+
+    if features is None:
+        return score
 
     for key in features:
         if key != 'general_features' and key in features and features.get(key) is not None and features.get(key).find(
