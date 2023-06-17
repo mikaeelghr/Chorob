@@ -54,7 +54,7 @@ def get_or_select_base_product(name: str, category_id, features: dict, price):
     if len(x) > 0:
         return x[0]
     print(name, category_id, price)
-    products = run_query(name, category_id, price * 1.3, price * 0.7)
+    products = run_query(name, price * 1.3, price * 0.7)
     if len(products) > 0:
         base = [c for c in BaseProduct.objects.filter(uid=products[0].uid)][0]
         return base
@@ -63,14 +63,13 @@ def get_or_select_base_product(name: str, category_id, features: dict, price):
     return BaseProduct.objects.create(name=name, category=category)
 
 
-def run_query(query: str, category_id, price__lt, price__gt, result_count: int = 1):
+def run_query(query: str, price__lt, price__gt, result_count: int = 1):
     search = ProductDocument.search()
     search = search.query(Q('bool',
                             should=[_get_match_query("name", query),
-                                    {'term': {'categories__id': category_id}},
                                     {'term': {'price__lt': price__lt}},
                                     {'term': {'price__gt': price__gt}}],
-                            minimum_should_match=1))
+                            minimum_should_match=3))
     results = search.execute()[:result_count]
     return results
 
