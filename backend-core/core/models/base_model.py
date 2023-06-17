@@ -86,3 +86,31 @@ class BaseModel(models.Model):
         self.is_deleted = True
         self.is_archived = True
         self.save()
+
+
+class Customer(BaseModel):
+    account = models.OneToOneField(
+        to='core.BaseAccount',
+        on_delete=models.CASCADE
+    )
+
+
+class Seller(BaseModel):
+    account = models.OneToOneField(
+        to='core.BaseAccount',
+        on_delete=models.CASCADE
+    )
+    shop = models.OneToOneField(
+        to='store.Shop',
+        on_delete=models.CASCADE,
+        null=True
+    )
+
+
+user_types = {
+    'seller': Seller,
+    'customer': Customer,
+}
+
+USER_TYPE_SELLER = 'seller'
+USER_TYPE_CUSTOMER = 'customer'

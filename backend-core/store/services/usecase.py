@@ -1,3 +1,5 @@
+from django.contrib.auth.models import User
+
 from store.services.documents import ProductDocument
 from store.serializers.dtos import ProductListQuery
 from store.models import Category, BaseProduct, Product, ProductHistory
@@ -41,7 +43,7 @@ def suggest_category(name: str, features: dict):
             max_score, best_id = score, category.id
     return best_id
 
-
+User
 def suggest_base_product(name: str, features: dict, category_id, price):
     query = ProductListQuery({
         'price__gt': price * 0.7,

@@ -1,8 +1,7 @@
 from django.core.exceptions import ValidationError
 from rest_framework.generics import get_object_or_404
 
-from core.models import BaseAccount
-from core.statics import user_types
+from core.models import BaseAccount, user_types
 
 
 def get_seller(user):

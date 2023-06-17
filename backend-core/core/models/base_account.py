@@ -3,8 +3,7 @@ from django.contrib.auth.models import PermissionsMixin
 from django.core.exceptions import ValidationError
 from django.db import models
 
-from core.models.base_model import BaseModel
-from core.statics.user_types import user_types
+from core.models.base_model import BaseModel, user_types
 
 
 class UserManager(BaseUserManager):
