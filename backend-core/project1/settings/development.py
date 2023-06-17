@@ -59,6 +59,15 @@ MIDDLEWARE = [
 CORS_ALLOW_CREDENTIALS = True
 CORS_ORIGIN_WHITELIST = [
     'https://2525-31-56-237-194.eu.ngrok.io',
+    'http://185.206.93.204:8086',
+    'http://185.206.93.204',
+    '185.206.93.204',
+    'chorob.ir',
+    'http://chorob.ir',
+    'https://chorob.ir',
+    'https://chorob.ir:8086',
+    'http://chorob.ir:8086',
+    'chorob.ir:8086',
     'http://0.0.0.0:8080',
     'http://localhost:3000',
     BASE_URL
