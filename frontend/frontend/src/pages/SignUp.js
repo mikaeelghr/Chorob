@@ -18,6 +18,10 @@ import {baseUrl} from "../Env";
 
 const theme = createTheme({
     direction: 'rtl',
+    typography: {
+        "fontFamily": `"Vazirmatn"`,
+        "fontSize": 14,
+    },
 });
 
 export default function SignUp() {

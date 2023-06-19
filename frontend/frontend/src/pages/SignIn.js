@@ -18,6 +18,10 @@ import instance from "../api/Api";
 
 const theme = createTheme({
     direction: 'rtl',
+   typography: {
+    "fontFamily": `"Vazirmatn"`,
+    "fontSize": 14,
+   },
 });
 
 export default function SignIn() {

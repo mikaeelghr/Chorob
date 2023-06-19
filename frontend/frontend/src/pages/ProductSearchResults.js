@@ -61,7 +61,11 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
 
 const mdTheme = createTheme({
     direction: 'rtl',
-    zIndex: 2
+    zIndex: 2,
+   typography: {
+    "fontFamily": `"Vazirmatn"`,
+    "fontSize": 14,
+   },
 });
 
 

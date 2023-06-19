@@ -22,7 +22,11 @@ const sections = [
 export default function Home() {
     const theme = createTheme({
         direction: 'rtl',
-        zIndex: 2
+        zIndex: 2,
+       typography: {
+        "fontFamily": `"Vazirmatn"`,
+        "fontSize": 14,
+       },
     });
     const location = useLocation()
     let isLogged = location.state
